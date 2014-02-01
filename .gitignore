@@ -9,7 +9,7 @@
 !.config/
 .config/*
 !.config/bspwm
-!.conf/sxhkd
+!.config/sxhkd
 
 !.zshrc
 !.Xresources
