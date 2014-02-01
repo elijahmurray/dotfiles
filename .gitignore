@@ -1,0 +1,21 @@
+# ignore everything
+/*
+/*/
+
+!.gitignore
+
+!.zshrc
+!.Xresources
+
+!.vimrc
+
+!.vim/
+.vim/*
+!.vim/colors/
+!.vim/colors/factory.vim
+
+!.tmux.conf
+
+!.scripts/
+.scripts/*
+!.scripts/files
