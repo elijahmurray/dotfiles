@@ -26,3 +26,7 @@
 !.scripts/
 .scripts/*
 !.scripts/files
+
+!.ncmpcpp/
+.ncmpcpp/*
+!.ncmpcpp/config
