@@ -165,3 +165,4 @@ alias r_clean="rake db:drop; rake db:create; rake db:migrate; rake db:drop RAILS
 cp-images() { find . -type f -name "*.jpg" -exec cp {} $1 \; }
 mv-images() { find . -type f -name "*.jpg" -exec mv {} $1 \; }
 
+record() { ffmpeg -f x11grab -s 1920x1080 -r 25 -i :0.0 $1.mkv }
