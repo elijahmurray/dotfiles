@@ -45,7 +45,7 @@ ZSH=$HOME/.oh-my-zsh
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(scala lein git git-flow)
+plugins=(scala bundler lein git git-flow)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -92,7 +92,7 @@ export PATH=$HOME/.scripts/bin:$PATH
 # where it gets saved
 #HISTFILE=~/.history
 SAVEHIST=0
-HISTSIZE=100
+HISTSIZE=1000
 
 # prompt
 local git=$(git_prompt_info)
@@ -157,8 +157,8 @@ eval "$(rbenv init -)"
 
 # web
 # rails
-alias r_clean="rake db:drop; rake db:create; rake db:migrate; rake db:drop RAILS_ENV=test; rake db:create RAILS_ENV=test; rake db:migrate RAILS_ENV=test;"
-
+alias rake-clean="rake db:drop; rake db:create; rake db:migrate; rake db:drop RAILS_ENV=test; rake db:create RAILS_ENV=test; rake db:migrate RAILS_ENV=test;"
+alias p-clean='rake-clean; rake environment tire:import:all FORCE=true'
 #functions
 
 # copies or moves images in current and subdirectory to specified path

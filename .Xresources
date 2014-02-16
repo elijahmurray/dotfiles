@@ -72,7 +72,7 @@ URxvt.clipboard.copycmd:  xsel -ibp
 URxvt.clipboard.pastecmd: xsel -obp
 
 URxvt.depth: 32
-URxvt.background: [55]#232c31
+URxvt.background: [75]#232c31
 
 URxvt*foreground: #FFFFFF
 URxvt*background: #232c31

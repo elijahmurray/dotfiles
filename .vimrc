@@ -413,6 +413,7 @@ Bundle 'gmarik/vundle'
 
 " My bundles here:
 Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'kien/ctrlp.vim'
 Bundle 'terryma/vim-smooth-scroll'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
@@ -421,6 +422,9 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'derekwyatt/vim-scala'
+" Vim Session
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-session'
 
 " Clojure Bundle's
 Bundle 'tpope/vim-fireplace'
@@ -431,8 +435,22 @@ filetype plugin indent on     " required!
 " => Vundle Configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
-map <C-n> :NERDTreeToggle<CR>
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeTabsToggle<CR>
+
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+
+" Close all open buffers on entering a window if the only
+" buffer that's left is the NERDTree buffer
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
 
 " CTRLP.vim
 " Exclude files and directories using Vim's wildignore and CtrlP's own g:ctrlp_custom_ignore:
@@ -475,6 +493,12 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+" easymotion
+map <Leader>n <plug>NERDTreeTabsToggle<CR
+
+" Vim sessions
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Prioritized Configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -484,9 +508,3 @@ set shortmess+=I
 map  <C-k> :tabn<CR>
 map  <C-j> :tabp<CR>
 map  <C-t> :tabnew<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Easymotion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EasyMotion_leader_key = 'm'
-
