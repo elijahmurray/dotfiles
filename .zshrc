@@ -157,7 +157,7 @@ eval "$(rbenv init -)"
 
 # web
 # rails
-alias rake-clean="rake db:drop; rake db:create; rake db:migrate; rake db:drop RAILS_ENV=test; rake db:create RAILS_ENV=test; rake db:migrate RAILS_ENV=test;"
+alias rake-clean="rake db:drop; rake db:create; rake db:migrate; rake db:drop RAILS_ENV=test; rake db:create RAILS_ENV=test; rake db:migrate RAILS_ENV=test"
 alias p-clean='rake-clean; rake environment tire:import:all FORCE=true'
 #functions
 
