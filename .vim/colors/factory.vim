@@ -214,9 +214,9 @@ hi WildMenu         cterm=NONE              ctermfg=black           ctermbg=brow
 """"""
 " TABS
 """"""""""""""""""""""""
-hi TabLine          cterm=bold,reverse      ctermfg=darkgrey        ctermbg=black
-hi TabLineFill      cterm=bold,reverse      ctermfg=darkgrey        ctermbg=grey
-hi TabLineSel       cterm=bold,reverse      ctermfg=grey           ctermbg=white
+hi TabLine          cterm=bold,reverse      ctermfg=white        ctermbg=NONE
+hi TabLineFill      cterm=bold,reverse      ctermfg=white        ctermbg=white
+hi TabLineSel       cterm=bold,reverse      ctermfg=darkblue     ctermbg=white
 
 
 """"""
@@ -230,7 +230,7 @@ hi PmenuSel         cterm=bold              ctermfg=black          ctermbg=brown
 " STATUS
 """"""""""""""""""""""""
 hi StatusLine       cterm=bold,reverse      ctermfg=white           ctermbg=darkblue
-hi StatusLineNC     cterm=bold,reverse      ctermfg=darkgrey        ctermbg=black
+hi StatusLineNC     cterm=bold,reverse      ctermfg=darkgrey        ctermbg=white
 
 
 """"""

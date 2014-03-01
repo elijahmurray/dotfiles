@@ -181,6 +181,9 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable mouse support for all
+set mouse=a
+
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
