@@ -144,6 +144,7 @@ alias l="ls"
 # actions
 alias xresources="xrdb -load ~/.Xresources"
 alias notes="vim ~/.notes"
+alias mkv2mp4="for i in *.mkv; do ffmpeg -i '$i' -vcodec copy -acodec copy -c:s mov_text '$i.mp4'; done"
 
 # prograams
 alias ncp="ncmpcpp"
