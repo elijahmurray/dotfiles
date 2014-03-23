@@ -1,4 +1,4 @@
-#
+
 # bspwm hotkeys
 #
 
@@ -92,8 +92,11 @@ super + e
 super + r
     dmenu_run -b
 
-super + d
+super + g
     firefox --no-remote
+
+super + d
+  open-file
 
 # make sxhkd reload its configuration files:
 super + Escape
