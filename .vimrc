@@ -425,6 +425,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'plasticboy/vim-markdown'
 " Vim Session
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
@@ -501,6 +502,9 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR
 
 " Vim sessions
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+" Vim markdown
+let g:vim_markdown_folding_disabled=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Prioritized Configs
