@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/gorefi/Downloads/ledger_lunacy'
+let g:netrw_dirhist_2='/Users/gorefi/.bundler'
+let g:netrw_dirhist_3='/Users/gorefi/.oh-my-zsh'
+let g:netrw_dirhist_4='/Users/gorefi/Development/lol-power-spike/app'
+let g:netrw_dirhist_5='/Users/gorefi/Development/lenda'
+let g:netrw_dirhist_6='/Users/gorefi/Development/lol-power-spike'

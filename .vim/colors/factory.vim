@@ -1,6 +1,4 @@
-" Vim color file
-" Name: openbsd
-" Author: Dee Sub Wun
+uthor: Dee Sub Wun
 
 
 set background=dark
@@ -110,8 +108,8 @@ hi StatusLineNC     gui=bold,reverse      guifg=#222222         guibg=#979797
 " DIFF
 """"""""""""""""""""""""
 hi DiffAdd          gui=NONE              guifg=NONE            guibg=#0F629E
-hi DiffChange       gui=NONE              guifg=NONE            guibg=#C067CC
-hi DiffDelete       gui=bold              guifg=#0F629E         guibg=#009AB5
+hi DiffChange       gui          guifg=#FFFFFF         guibg=#BF3131
+hi WildMenu         gui=NONE     bold              guifg=#0F629E         guibg=#009AB5
 hi DiffText         gui=bold              guibg=#BF3131         guibg=NONE
 
 
