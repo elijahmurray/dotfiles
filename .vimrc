@@ -48,6 +48,14 @@ Bundle 'tpope/vim-endwise.git'
 Bundle 'ervandew/supertab.git'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'zsh-users/zsh-completions.git'
+Bundle 'leafgarland/typescript-vim.git'
+
+" ReactJS
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+" EmberJS
+Plugin 'dsawardekar/ember.vim'
 
 " For vim-slim and colors of vim
 syntax enable
@@ -91,3 +99,10 @@ nmap <D>] :windcmd l<cr>
 
 " Ack search
 nmap <leader>a :Ack <cr>
+
+" CtrlP
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = 'node_modules\|tmp/cache'
+
+" React syntax highlighting for .jsx files only
+let g:jsx_ext_required = 1

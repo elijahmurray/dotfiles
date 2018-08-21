@@ -1,6 +1,10 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+#Dotnet Core Variables for Kyazoonga
+export ASPNETCORE_ENVIRONMENT="Development"
+export API_ENDPOINT="http://kzapi-dev2.us-west-2.elasticbeanstalk.com"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -14,6 +18,7 @@ alias death='killall ruby; killall mongod; redis-cli shutdown'
 alias fman='foreman start -f Procfile.dev'
 alias fuck='sudo killall VDCAssistant'
 alias cuke='bundle exec cucumber'
+alias tsm="transmission-remote"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -87,3 +92,7 @@ export NVM_DIR="/Users/gorefi/.nvm"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/bin:$PATH"
+
+# NVM settings
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
