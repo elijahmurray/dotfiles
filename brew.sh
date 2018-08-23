@@ -19,4 +19,10 @@ brew install vim --with-override-system-vi
 
 # Install other useful binaries
 brew install git
+brew install tmux
 
+# Install applications
+brew cask install iterm2
+brew cask install spectacle
+brew cask install rescuetime
+brew cask install skitch
