@@ -20,6 +20,7 @@ brew install vim --with-override-system-vi
 # Install other useful binaries
 brew install git
 brew install tmux
+brew install npm
 
 # Install applications
 brew cask install iterm2
