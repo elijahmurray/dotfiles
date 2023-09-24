@@ -104,6 +104,15 @@ vim +PlugInstall +qall
 
 echo -e "${_colors_green}Vim setup complete.${_colors_reset}"
 
+# Check if Oh My Zsh is already installed
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+    echo "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+    echo "Oh My Zsh is already installed. Skipping installation."
+fi
+
+
 # Update .zshrc if needed
 if [[ $_dotfiles_dir != "$HOME/dotfiles" ]]; then
     echo "Automatically updating ${_colors_cyan}.zshrc${_colors_reset} to point to the correct folder..."
