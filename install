@@ -93,3 +93,8 @@ if [[ $_dotfiles_dir != "$HOME/dotfiles" ]]; then
     echo "Done. Backup of .zshrc has been saved as .zshrc.bak in case you need it."
     echo ""
 fi
+
+# Adjust permissions for the original files within the .dotfiles directory
+find $_dotfiles_dir -type d -exec chmod 755 {} \;  # Set directory permissions
+find $_dotfiles_dir -type f -exec chmod 644 {} \;  # Set file permissions
+
