@@ -86,20 +86,21 @@ done
 
 echo "${_colors_green}Dotfiles symlinked.${_colors_reset}"
 
-# Set up Vundle for Vim
-echo -e "${_colors_green}Setting up Vundle and Vim plugins...${_colors_reset}"
+# Set up vim-plug for Vim
+echo -e "${_colors_green}Setting up vim-plug and Vim plugins...${_colors_reset}"
 
-# Check if Vundle is already installed
-if [[ ! -e "$HOME/.vim/bundle/Vundle.vim" ]]; then
-    echo -e "${_colors_cyan}Cloning Vundle...${_colors_reset}"
-    git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
+# Check if vim-plug is already installed
+if [[ ! -e "$HOME/.vim/autoload/plug.vim" ]]; then
+    echo -e "${_colors_cyan}Downloading vim-plug...${_colors_reset}"
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 else
-    echo -e "${_colors_cyan}Vundle already installed, skipping clone.${_colors_reset}"
+    echo -e "${_colors_cyan}vim-plug already installed, skipping download.${_colors_reset}"
 fi
 
-# Install Vim plugins using Vundle
+# Install Vim plugins using vim-plug
 echo -e "${_colors_cyan}Installing Vim plugins...${_colors_reset}"
-vim +PluginInstall +qall
+vim +PlugInstall +qall
 
 echo -e "${_colors_green}Vim setup complete.${_colors_reset}"
 
