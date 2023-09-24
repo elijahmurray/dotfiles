@@ -22,7 +22,8 @@ _colors_cyan=$(tput setaf 6)
 _colors_reset=$(tput sgr0)
 
 _script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-_dotfiles_dir="${_script_dir%/*}"
+_dotfiles_dir="$_script_dir"
+
 
 echo ""
 echo -e "The dotfiles folder is set as ${_colors_bold}${_colors_cyan}${_dotfiles_dir}${_colors_reset}. Is this correct?"
@@ -34,7 +35,6 @@ if [ -n "$confirm" ]; then
         echo -e "${_colors_red}Could not find ${_colors_bold}${confirm}${_colors_reset}, please re-run the script.${_colors_reset}"
         exit 1
     fi
-
     _dotfiles_dir="$confirm"
 fi
 
@@ -43,58 +43,70 @@ echo -e "${_colors_green}Setting up dotfiles in ${_colors_bold}${_dotfiles_dir}$
 echo ""
 
 _files_to_symlink=(
-.config/amfora
-.config/bat
-.config/gh
-.config/htop
-.config/youtube-dl
-.gnupg/gpg.conf
-.gnupg/gpg-agent.conf
-.curlrc
-.gitconfig
-.gvimrc
-.hushlogin
-.npmrc
-.nuxtrc
+.macos
+.oh-my-zsh/custom/themes/*    # Assuming your custom themes are here.
+.oh-my-zsh/custom/plugins/*   # Assuming your custom plugins are here.
+.profile
+.rspec
+.tmux.conf
 .vim
 .vimrc
 .zshrc
+install
 )
 
+# Ensure base directories exist
 mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.gnupg"
 
 for f in "${_files_to_symlink[@]}"; do
-    echo "${_colors_cyan}${_dotfiles_dir}/${f}${_colors_reset} ${_colors_bold}→${_colors_reset} ${_colors_cyan}$HOME/${f}${_colors_reset}"
+    src="${_dotfiles_dir}/$f"
+    dest="$HOME/$f"
+    echo "Processing ${_colors_cyan}$f${_colors_reset}..."
 
-    if [[ -L "$HOME/$f" ]]; then
-        echo "$HOME/$f is already symlinked, skipping..."
-    elif [[ ! -e "${_dotfiles_dir}/$f" ]]; then
-        echo "Could not find ${_dotfiles_dir}/$f, skipping..."
-    else
-        if [[ -e "$HOME/$f" || -L "$HOME/$f" ]]; then
-            timestamp=$(date +%Y%m%d_%H%M%S)
-            echo "$HOME/$f already exists, backing it up to $HOME/$f.bak_$timestamp"
-            mv "$HOME/$f" "$HOME/$f.bak_$timestamp"
-        fi
-        ln -nfsv "${_dotfiles_dir}/$f" "$HOME/$f"
+    if [[ -L "$dest" ]]; then
+        echo "$dest is already symlinked, skipping..."
+        continue
     fi
+
+    if [[ ! -e "$src" ]]; then
+        echo "Could not find $src, skipping..."
+        continue
+    fi
+
+    if [[ -e "$dest" ]]; then
+        timestamp=$(date +%Y%m%d_%H%M%S)
+        echo "$dest already exists, backing it up to $dest.bak_$timestamp"
+        mv "$dest" "$dest.bak_$timestamp"
+    fi
+
+    echo "Creating symlink: ${_colors_cyan}${src}${_colors_reset} ${_colors_bold}→${_colors_reset} ${_colors_cyan}${dest}${_colors_reset}"
+    ln -sfv "$src" "$dest"
 done
 
-echo ""
 echo "${_colors_green}Dotfiles symlinked.${_colors_reset}"
-echo ""
 
+# Set up Vundle for Vim
+echo -e "${_colors_green}Setting up Vundle and Vim plugins...${_colors_reset}"
+
+# Check if Vundle is already installed
+if [[ ! -e "$HOME/.vim/bundle/Vundle.vim" ]]; then
+    echo -e "${_colors_cyan}Cloning Vundle...${_colors_reset}"
+    git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
+else
+    echo -e "${_colors_cyan}Vundle already installed, skipping clone.${_colors_reset}"
+fi
+
+# Install Vim plugins using Vundle
+echo -e "${_colors_cyan}Installing Vim plugins...${_colors_reset}"
+vim +PluginInstall +qall
+
+echo -e "${_colors_green}Vim setup complete.${_colors_reset}"
+
+# Update .zshrc if needed
 if [[ $_dotfiles_dir != "$HOME/dotfiles" ]]; then
-    echo "${_colors_red}HEY YOU GOTTA DO THIS TO NOT BREAK STUFF!${_colors_reset}"
-    echo ""
     echo "Automatically updating ${_colors_cyan}.zshrc${_colors_reset} to point to the correct folder..."
     sed -i.bak "s|export DOTFILES_PATH=\"\$HOME/dotfiles\"|export DOTFILES_PATH=\"$_dotfiles_dir\"|g" "$HOME/.zshrc"
     echo "Done. Backup of .zshrc has been saved as .zshrc.bak in case you need it."
-    echo ""
 fi
-
-# Adjust permissions for the original files within the .dotfiles directory
-find $_dotfiles_dir -type d -exec chmod 755 {} \;  # Set directory permissions
-find $_dotfiles_dir -type f -exec chmod 644 {} \;  # Set file permissions
 
